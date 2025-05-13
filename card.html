@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divination in the House</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cinzel:wght@400;700&family=IM+Fell+English&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(180deg, #2b1e16 0%, #3c2f2f 100%);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            font-family: 'IM Fell English', serif;
+        }
+
+        .content {
+            background: url(https://i.pinimg.com/736x/bd/f0/1f/bdf01f84948caf098ab2b5b9dbd3f836.jpg) center/cover no-repeat;
+            width: 90%;
+            max-width: 700px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            filter: sepia(0.3) brightness(0.9);
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(139, 69, 19, 0.3);
+            overflow: hidden;
+            position: relative;
+            padding: 1.5em;
+            margin: 2em auto;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(https://www.transparenttextures.com/patterns/paper-fibers.png);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .divination-wrapper {
+            background: rgba(47, 34, 27, 0.85);
+            backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2.5em;
+            width: 90%;
+            max-width: 400px;
+            border: 2px solid #d4a373;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(212, 163, 115, 0.4), inset 0 0 10px rgba(139, 69, 19, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        form#fortuneForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5em;
+            width: 100%;
+        }
+
+        form#fortuneForm .question {
+            width: 100%;
+            height: 120px;
+            resize: none;
+            text-align: center;
+            border-radius: 10px;
+            padding: 12px;
+            font-family: 'Amatic SC', cursive;
+            font-size: 1.4em;
+            background: rgba(255, 245, 238, 0.2);
+            color: #e8d5b9;
+            border: 2px solid rgba(212, 163, 115, 0.5);
+            outline: none;
+            transition: all 0.4s ease;
+        }
+
+        form#fortuneForm .question:focus {
+            background: rgba(255, 245, 238, 0.3);
+            border-color: #8b4513;
+            box-shadow: 0 0 15px rgba(212, 163, 115, 0.6);
+            transform: scale(1.02);
+        }
+
+        .fortunes {
+            margin-top: 1.5em;
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #8b4513, #d4a373);
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(212, 163, 115, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fortunes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(212, 163, 115, 0.7);
+            animation: glow 1.5s infinite alternate;
+        }
+
+        .fortunes::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .fortunes:hover::after {
+            left: 100%;
+        }
+
+        label {
+            font-size: 2.6em;
+            color: #e8d5b9;
+            font-family: 'Amatic SC', cursive;
+            text-shadow: 0 0 10px rgba(212, 163, 115, 0.8);
+            animation: flicker 3s infinite alternate;
+        }
+
+        /* Анимации */
+        @keyframes flicker {
+            0% { text-shadow: 0 0 5px #d4a373, 0 0 10px #d4a373; }
+            100% { text-shadow: 0 0 15px #d4a373, 0 0 25px #d4a373; }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px rgba(212, 163, 115, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(212, 163, 115, 0.8); }
+        }
+      .question::placeholder {
+    color: #d4a373; /* или любой другой цвет */
+    opacity: 1; /* для лучшей видимости */
+}
+
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .content {
+                height: 350px;
+                padding: 1em;
+            }
+
+            .divination-wrapper {
+                padding: 1.5em;
+                max-width: 90%;
+            }
+
+            .question {
+                height: 100px;
+                font-size: 1.2em;
+            }
+
+            .fortunes {
+                font-size: 1.4em;
+                padding: 10px 20px;
+            }
+
+            label {
+                font-size: 1.4em;
+            }
+        }
+.question.error {
+    animation: shake 0.5s;
+    border-color: #8b4513;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Стили для кнопки в отключённом состоянии */
+.fortunes:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="divination-wrapper">
+            <form id="fortuneForm">
+                <label for="question">Шепни Дому свой вопрос</label>
+                <textarea id="question" class="question" placeholder="Кликни, чтобы вписать тайну"></textarea>
+                <button id="fortuneButton" class="fortunes">Получить ответ</button>
+            </form>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/gh/KiraBelo/cards_script@25e7e31/card_engine.js" charset="UTF-8"></script>
+</body>
+</html>
