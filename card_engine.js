@@ -94,7 +94,7 @@ fortuneForm.addEventListener('submit', (e) => {
     // Генерируем ответ
     const random = Math.floor(Math.random() * cards.length);
     const card = cards[random];
-    const answer = `[align=center][size=18]${text}[/size][/align]\n${card}`;
+    const answer = `[align=center][size=18]${text}[/size][/align]\n[align=center]${card}[/align]`;
 
     // Анимация "печатной машинки"
     let i = 0;
